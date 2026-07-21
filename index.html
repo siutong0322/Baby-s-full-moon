@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <!-- 這行是關鍵：強制網頁寬度符合手機螢幕，且禁止親友意外放大縮小導致畫面歪掉 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>寶貝滿月喜宴邀請函</title>
+    <style>
+        /* 全局手機優化 */
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+            color: #4a4a4a;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent; /* 移除手機點擊時的藍色陰影 */
+        }
+
+        /* 手機卡片主容器 */
+        .phone-container {
+            width: 100%;
+            max-width: 450px; /* 標準手機網頁寬度 */
+            margin: 15px;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 24px;
+            box-shadow: 0 8px 24px rgba(255, 77, 109, 0.15);
+            padding: 24px 20px;
+            text-align: center;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* 標題與內文 */
+        h1 {
+            color: #ff4d6d;
+            font-size: 1.8rem;
+            margin: 10px 0 5px 0;
+        }
+        .subtitle {
+            font-size: 1rem;
+            color: #ff758f;
+            margin-bottom: 25px;
+        }
+
+        /* 手機版相框 */
+        .photo-frame {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 25px;
+        }
+
+        /* BB 照片（圓形） */
+        .bb-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        /* 圍繞相片的動態公仔 */
+        .floating-emoji {
+            position: absolute;
+            font-size: 1.8rem;
+            animation: floatUpDown 3s ease-in-out infinite;
+        }
+
+        /* 調整公仔在手機螢幕上的圍繞位置 */
+        .emoji1 { top: -8px; left: -8px; animation-delay: 0s; }
+        .emoji2 { top: -8px; right: -8px; animation-delay: 0.5s; }
+        .emoji3 { bottom: -8px; left: -8px; animation-delay: 1s; }
+        .emoji4 { bottom: -8px; right: -8px; animation-delay: 1.5s; }
+
+        @keyframes floatUpDown {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(8deg); }
+        }
+
+        /* 宴會資訊區塊 */
+        .info-section {
+            background: #fff0f3;
+            border-radius: 16px;
+            padding: 16px;
+            margin-top: 15px;
+            text-align: left;
+        }
+        .info-item {
+            margin: 12px 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #ff4d6d;
+            flex-shrink: 0;
+            width: 75px;
+        }
+        .info-text {
+            color: #555;
+        }
+
+        /* 手機版按鈕樣式 */
+        .btn-group {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.1s;
+        }
+        .btn:active {
+            transform: scale(0.98); /* 手機按下去的反饋效果 */
+        }
+        .btn-map {
+            background-color: #4285F4;
+            color: white;
+        }
+        .btn-rsvp {
+            background-color: #25D366; /* WhatsApp 綠色，若用 LINE 可換成 #06C755 */
+            color: white;
+        }
+        .btn-icon {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        /* 背景飄落元素 */
+        .petal {
+            position: fixed;
+            top: -20px;
+            pointer-events: none;
+            animation: fall linear infinite;
+            z-index: 1;
+        }
+        @keyframes fall {
+            to { transform: translateY(105vh) translateX(50px) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="phone-container">
+        <h1>BB 滿月誌慶</h1>
+        <div class="subtitle">誠邀您出席滿月喜宴 👶</div>
+
+        <!-- 照片與圍繞的公仔動畫 -->
+        <div class="photo-frame">
+            <!-- 請將 baby.jpg 放在與此檔案相同的資料夾內 -->
+            <img src="BB.jpg" alt="BB出生照" width="300" class="bb-photo" onerror="this.src='https://unsplash.com'">
+            
+            <div class="floating-emoji emoji1">👶</div>
+            <div class="floating-emoji emoji2">🍼</div>
+            <div class="floating-emoji emoji3">🧸</div>
+            <div class="floating-emoji emoji4">✨</div>
+        </div>
+
+        <!-- 宴會資訊 -->
+        <div class="info-section">
+            <div class="info-item">
+                <span class="info-label">📅 日期：</span>
+                <span class="info-text">2026年 X月 X日（星期X）</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">⏰ 時間：</span>
+                <span class="info-text">18:00 恭候 | 20:00 入席</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">📍 地點：</span>
+                <span class="info-text">[請填寫酒家名稱]</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">🗺️ 地址：</span>
+                <span class="info-text">[請填寫酒家詳細地址]</span>
+            </div>
+        </div>
+
+        <!-- 手機專用功能按鈕區 -->
+        <div class="btn-group">
+            <!-- 導航按鈕：請把下面網址後面的「酒家地址」換成真正的地址 -->
+            <a href="https://google.com" target="_blank" class="btn btn-map">
+                <span class="btn-icon">🗺️</span>點我 Google 地圖導航
+            </a>
+            
+            
+        </div>
+    </div>
+
+    <!-- 背景動態飄落心形與星星 -->
+    <script>
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            const items = ['❤️', '✨', '🌸', '🎈'];
+            petal.innerText = items[Math.floor(Math.random() * items.length)];
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.fontSize = Math.random() * 12 + 12 + 'px'; /* 縮小手機版飄落物尺寸 */
+            petal.style.animationDuration = Math.random() * 3 + 4 + 's';
+            petal.style.opacity = Math.random() * 0.6 + 0.4;
+            document.body.appendChild(petal);
+            setTimeout(() => { petal.remove(); }, 6000);
+        }
+        setInterval(createPetal, 400); /* 手機版頻率稍微調慢，畫面更乾淨 */
+    </script>
+</body>
+</html>
